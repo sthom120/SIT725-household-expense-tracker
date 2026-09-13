@@ -7,6 +7,8 @@ const authRoutes = require('./routes/authRoutes');
 const householdRoutes = require('./routes/householdRoutes');
 
 const app = express();
+app.use(express.json());
+app.use(express.static('public'));
 
 app.use(express.json());
 
