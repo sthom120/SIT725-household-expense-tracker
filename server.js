@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const path = require('path');
 
 const authRoutes = require('./routes/authRoutes');
+const householdRoutes = require('./routes/householdRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -18,6 +19,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes
 app.use('/api/auth', authRoutes);
+app.use('/households', householdRoutes);
+
+app.get('/api', (req, res) => {
+  res.json({
+    message: 'Household Expense Tracker API is running.'
+  });
+});
 
 // MongoDB connection
 mongoose
