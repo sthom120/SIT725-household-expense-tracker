@@ -8,6 +8,13 @@ const authRoutes = require('./routes/authRoutes');
 const householdRoutes = require('./routes/householdRoutes');
 
 const app = express();
+// Middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Serve frontend files
+app.use(express.static(path.join(__dirname, 'public')));
+
 const PORT = process.env.PORT || 3000;
 
 // Middleware
