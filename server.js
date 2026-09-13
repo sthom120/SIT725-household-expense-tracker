@@ -2,31 +2,39 @@ require('dotenv').config();
 
 const express = require('express');
 const mongoose = require('mongoose');
+const path = require('path');
 
 const authRoutes = require('./routes/authRoutes');
 const householdRoutes = require('./routes/householdRoutes');
 
 const app = express();
+const PORT = process.env.PORT || 3000;
 
+// Middleware
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.use('/auth', authRoutes);
+// Serve frontend files
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Routes
+app.use('/api/auth', authRoutes);
 app.use('/households', householdRoutes);
 
-app.get('/', (req, res) => {
+app.get('/api', (req, res) => {
   res.json({
     message: 'Household Expense Tracker API is running.'
   });
 });
 
-const PORT = process.env.PORT || 3000;
-
-mongoose.connect(process.env.MONGODB_URI)
+// MongoDB connection
+mongoose
+  .connect(process.env.MONGODB_URI)
   .then(() => {
-    console.log('MongoDB connected successfully');
+    console.log('Connected to MongoDB');
 
     app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}`);
+      console.log(`Server running on http://localhost:${PORT}`);
     });
   })
   .catch((error) => {
