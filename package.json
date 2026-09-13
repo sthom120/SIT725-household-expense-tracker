@@ -4,8 +4,9 @@
   "description": "Household Expense Tracker group project for SIT725 Applied Software Engineering.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "start": "node server.js",
+  "test": "echo \"Error: no test specified\" && exit 1"
+},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sthom120/SIT725-household-expense-tracker.git"
