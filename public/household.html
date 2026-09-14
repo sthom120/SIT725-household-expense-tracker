@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Create Household - Household Expense Tracker</title>
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+  >
+</head>
+
+<body>
+
+  <div class="container">
+    <h4>Create Household</h4>
+
+    <form id="householdForm">
+
+      <div class="input-field">
+        <input id="householdName" type="text" required>
+        <label for="householdName">Household Name</label>
+      </div>
+
+      <div class="input-field">
+        <input id="householdIdentifier" type="text" required>
+        <label for="householdIdentifier">Household Identifier</label>
+      </div>
+
+      <button class="btn" type="submit">
+        Create Household
+      </button>
+
+    </form>
+
+    <p id="message"></p>
+  </div>
+
+  <script src="js/household.js"></script>
+
+</body>
+</html>
