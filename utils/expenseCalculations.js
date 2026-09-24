@@ -7,12 +7,21 @@ const calculateEqualSplit = (amount, participantIds) => {
     throw new Error('At least one participant is required.');
   }
 
-  const share = Number((amount / participantIds.length).toFixed(2));
+  const totalCents = Math.round(amount * 100);
+  const participantCount = participantIds.length;
 
-  return participantIds.map((userId) => ({
-    user: userId,
-    share
-  }));
+  const baseShareCents = Math.floor(totalCents / participantCount);
+  const remainderCents = totalCents % participantCount;
+
+  return participantIds.map((userId, index) => {
+    const shareCents =
+      baseShareCents + (index < remainderCents ? 1 : 0);
+
+    return {
+      user: userId,
+      share: shareCents / 100
+    };
+  });
 };
 
 module.exports = {
