@@ -18,9 +18,17 @@
     <h4>Split Expense</h4>
 
     <p>Select the household members who are sharing this expense.</p>
+<div class="input-field">
+  <input id="expenseAmount" type="number" min="0.01" step="0.01">
+  <label for="expenseAmount">Expense Amount ($)</label>
+</div>
 
     <div id="participantList"></div>
+<button id="calculateSplitButton" class="btn" type="button">
+  Calculate Split
+</button>
 
+<div id="splitResult"></div>
     <p id="message"></p>
   </div>
 
