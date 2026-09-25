@@ -7,6 +7,7 @@ const path = require('path');
 const authRoutes = require('./routes/authRoutes');
 const householdRoutes = require('./routes/householdRoutes');
 const expenseCategoryRoutes = require('./routes/expenseCategoryRoutes');
+const expenseSplitRoutes = require('./routes/expenseSplitRoutes');
 
 const app = express();
 
@@ -23,6 +24,7 @@ const PORT = process.env.PORT || 3000;
 app.use('/api/auth', authRoutes);
 app.use('/households', householdRoutes);
 app.use('/api/expense-categories', expenseCategoryRoutes);
+app.use('/api/expense-splits', expenseSplitRoutes);
 
 app.get('/api', (req, res) => {
   res.json({
