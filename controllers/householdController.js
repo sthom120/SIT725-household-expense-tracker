@@ -1,12 +1,18 @@
 const Household = require('../models/Household');
+const User = require('../models/User');
 
 const createHousehold = async (req, res) => {
   try {
-    const { householdName, householdIdentifier, members } = req.body;
+    const {
+      householdName,
+      householdIdentifier,
+      creatorId
+    } = req.body;
 
-    if (!householdName || !householdIdentifier) {
+    if (!householdName || !householdIdentifier || !creatorId) {
       return res.status(400).json({
-        message: 'Household name and household identifier are required.'
+        message:
+          'Household name, household identifier and creator are required.'
       });
     }
 
@@ -20,10 +26,23 @@ const createHousehold = async (req, res) => {
       });
     }
 
+    const creator = await User.findById(creatorId);
+
+    if (!creator) {
+      return res.status(400).json({
+        message: 'Creator user not found.'
+      });
+    }
+
     const household = new Household({
       householdName,
       householdIdentifier,
-      members: members || []
+      members: [
+        {
+          user: creator._id,
+          relationship: 'creator'
+        }
+      ]
     });
 
     await household.save();
@@ -33,6 +52,8 @@ const createHousehold = async (req, res) => {
       household
     });
   } catch (error) {
+    console.error('Create household error:', error);
+
     return res.status(500).json({
       message: 'Unable to create household.'
     });

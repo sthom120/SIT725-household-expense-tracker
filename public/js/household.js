@@ -4,9 +4,18 @@ const message = document.getElementById('message');
 householdForm.addEventListener('submit', async (event) => {
   event.preventDefault();
 
-  const householdName = document.getElementById('householdName').value.trim();
+  const householdName =
+    document.getElementById('householdName').value.trim();
+
   const householdIdentifier =
     document.getElementById('householdIdentifier').value.trim();
+
+  const userId = localStorage.getItem('userId');
+
+  if (!userId) {
+    message.textContent = 'Please register or log in before creating a household.';
+    return;
+  }
 
   try {
     const response = await fetch('/households', {
@@ -17,7 +26,7 @@ householdForm.addEventListener('submit', async (event) => {
       body: JSON.stringify({
         householdName,
         householdIdentifier,
-        members: []
+        creatorId: userId
       })
     });
 

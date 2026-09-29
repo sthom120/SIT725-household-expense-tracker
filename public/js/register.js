@@ -9,7 +9,7 @@ registrationForm.addEventListener('submit', async (event) => {
   const password = document.getElementById('password').value;
 
   try {
-    const response = await fetch('/api/auth/register', {
+    const response = await fetch('/auth/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -25,10 +25,10 @@ registrationForm.addEventListener('submit', async (event) => {
 
     message.textContent = data.message;
 
-    if (response.ok) {
-      registrationForm.reset();
-    }
-
+  if (response.ok) {
+    localStorage.setItem('userId', data.userId);
+    registrationForm.reset();
+  }
   } catch (error) {
     message.textContent = 'Unable to connect to the server.';
   }
