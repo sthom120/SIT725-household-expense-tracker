@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Create Household - Household Expense Tracker</title>
+  <title>Household Dashboard - Household Expense Tracker</title>
 
   <link
     rel="stylesheet"
@@ -15,27 +15,92 @@
 <body>
 
   <div class="container">
-    <h4>Create Household</h4>
 
-    <form id="householdForm">
+    <h4>Household Dashboard</h4>
 
-      <div class="input-field">
-        <input id="householdName" type="text" required>
-        <label for="householdName">Household Name</label>
+    <!-- Create Household -->
+    <div class="card">
+      <div class="card-content">
+
+        <span class="card-title">Create Household</span>
+
+        <form id="householdForm">
+
+          <div class="input-field">
+            <input id="householdName" type="text" required>
+            <label for="householdName">Household Name</label>
+          </div>
+
+          <div class="input-field">
+            <input id="householdIdentifier" type="text" required>
+            <label for="householdIdentifier">
+              Household Identifier
+            </label>
+          </div>
+
+          <button class="btn" type="submit">
+            Create Household
+          </button>
+
+        </form>
+
+        <p id="message"></p>
+
+      </div>
+    </div>
+
+
+    <!-- Household Information -->
+    <div id="dashboard" class="card" style="display: none;">
+
+      <div class="card-content">
+
+        <span class="card-title">
+          Household Information
+        </span>
+
+        <p>
+          <strong>Household Name:</strong>
+          <span id="displayHouseholdName"></span>
+        </p>
+
+        <p>
+          <strong>Household Identifier:</strong>
+          <span id="displayHouseholdIdentifier"></span>
+        </p>
+
+        <p>
+          <strong>Household ID:</strong>
+          <span id="displayHouseholdId"></span>
+        </p>
+
+        <h5>Members</h5>
+
+        <ul id="memberList" class="collection">
+        </ul>
+
       </div>
 
-      <div class="input-field">
-        <input id="householdIdentifier" type="text" required>
-        <label for="householdIdentifier">Household Identifier</label>
-      </div>
+    </div>
+    <div class="card-panel">
+  <h4>Balance Summary</h4>
 
-      <button class="btn" type="submit">
-        Create Household
-      </button>
+  <div id="balanceMessage"></div>
 
-    </form>
+  <table class="striped">
+    <thead>
+      <tr>
+        <th>Member</th>
+        <th>Amount Paid</th>
+        <th>Balance</th>
+      </tr>
+    </thead>
 
-    <p id="message"></p>
+    <tbody id="balanceTableBody">
+    </tbody>
+  </table>
+</div>
+
   </div>
 
   <script src="js/household.js"></script>
