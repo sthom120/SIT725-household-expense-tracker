@@ -14,7 +14,9 @@ const householdMemberSchema = new mongoose.Schema(
       trim: true
     }
   },
-  { _id: false }
+  {
+    _id: false
+  }
 );
 
 const householdSchema = new mongoose.Schema({
