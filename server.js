@@ -8,6 +8,7 @@ const authRoutes = require('./routes/authRoutes');
 const householdRoutes = require('./routes/householdRoutes');
 const expenseCategoryRoutes = require('./routes/expenseCategoryRoutes');
 const expenseSplitRoutes = require('./routes/expenseSplitRoutes');
+const expenseRoutes = require('./routes/expenseRoutes');
 
 const app = express();
 
@@ -25,6 +26,7 @@ app.use('/api/auth', authRoutes);
 app.use('/households', householdRoutes);
 app.use('/api/expense-categories', expenseCategoryRoutes);
 app.use('/api/expense-splits', expenseSplitRoutes);
+app.use('/api/expenses', expenseRoutes);
 
 app.get('/api', (req, res) => {
   res.json({
