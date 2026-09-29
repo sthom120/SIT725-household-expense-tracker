@@ -6,8 +6,10 @@ const path = require('path');
 
 const authRoutes = require('./routes/authRoutes');
 const householdRoutes = require('./routes/householdRoutes');
+const expenseCategoryRoutes = require('./routes/expenseCategoryRoutes');
 
 const app = express();
+
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -17,16 +19,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 const PORT = process.env.PORT || 3000;
 
-// Middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-// Serve frontend files
-app.use(express.static(path.join(__dirname, 'public')));
-
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/households', householdRoutes);
+app.use('/api/expense-categories', expenseCategoryRoutes);
 
 app.get('/api', (req, res) => {
   res.json({
