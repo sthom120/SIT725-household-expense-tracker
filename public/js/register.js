@@ -26,6 +26,8 @@ registrationForm.addEventListener('submit', async (event) => {
     message.textContent = data.message;
 
     if (response.ok) {
+      // Stand-in for login (US02): remember the new user's ID.
+      localStorage.setItem('userId', data.userId);
       registrationForm.reset();
     }
 
