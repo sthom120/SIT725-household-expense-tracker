@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Join Household - Household Expense Tracker</title>
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+  >
+</head>
+
+<body>
+
+  <div class="container">
+    <h4>Join Household</h4>
+
+    <form id="joinHouseholdForm">
+
+      <div class="input-field">
+        <input id="householdIdentifier" type="text" required>
+        <label for="householdIdentifier">Household Identifier</label>
+      </div>
+
+      <button class="btn" type="submit">
+        Join Household
+      </button>
+
+    </form>
+
+    <p id="message"></p>
+  </div>
+  <script
+  src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js">
+</script>
+  <script src="js/joinHousehold.js"></script>
+
+</body>
+</html>
